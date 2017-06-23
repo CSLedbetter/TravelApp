@@ -1,28 +1,51 @@
-(function(){
+(function () {
     'use strict';
 
     angular
-        .module('app')
-        .factory('TravelFactory', TravelFactory)
+        .module('travelApp')
+        .factory('travelFactory', travelFactory)
 
-    TravelFactory.$inject = ['$http'];
+    travelFactory.$inject = ['$http'];
 
-    function TravelFactory($http) {
+    function travelFactory($http) {
         var service = {
-            getFlightData: getFlightData
+            getFlightCodes: getFlightCodes
+            // ,getArrivalData: getArrivalData
         };
 
         return service;
 
-        function getFlightData() { 
+        function getFlightCodes(response) {
             return $http
-                .get('')
-                .then(function(){
+                .get('https://iatacodes.org/api/v6/routes?api_key=8ec73afd-8270-4eb4-9db7-c4cab98d01b2&flight_number=UA276')
+                .then(function (response) {
+                    var citiCode = response.data.response[0].arrival;
+                    getArrivalData(citiCode);
+                });
+        }
 
+        function getArrivalData(citiCode) {
+            return $http
+                .get('http://services.faa.gov/airport/status/' + citiCode)
+                .then(function (response) {
+                    var citiName = response.data.city
+                    console.log(response);
+                    //return response;
+                    getRestInfo(citiName);
+                });
+        }
+            //https://api.yelp.com/v3/businesses/search?term=restaurants&location=denver&sort_by=rating
+        function getRestInfo(citiName) {
+            return $http
+                .get('https://api.yelp.com/v3/businesses/search?term=restaurants&location='+ citiName + '&sort_by=rating', {
+                    headers: {
+                        'Authorization': 'Bearer cBGBDuqc1jCkQWfbTTrGw4ZII348RHKnf-OIwNPLvfq4gZ02vH8PcWY2g61PWOKnealVZK6VK7SXWEfIeQK_C8-BwBlu0WMuhZSDKzk1mpXWyLGEijDHmbyaIEFNWXYx'
+                    }
                 })
-
+                .then(function (response) {
+                    console.log(response);
+                    return response;
+                });
         }
     }
 })();
-
-// rapid.call('RapidAPI', 'getAll', {'{}'});

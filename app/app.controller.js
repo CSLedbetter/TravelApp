@@ -2,16 +2,25 @@
     'use strict';
 
     angular
-        .module('app')
-        .controller('TravelController', TravelController)
+        .module('travelApp')
+        .controller('travelCtrl', travelCtrl)
 
-    TravelController.$inject = [];
+    travelCtrl.$inject = ['travelFactory'];
 
-    function TravelController() {
-
+    function travelCtrl(travelFactory) {
         var vm = this;
-        vm.show = false;
+         vm.show = false;
         vm.click = click;
+        onActivate();
+
+        function onActivate (){
+            travelFactory
+                .getFlightCodes()
+                .then(function(cityCode){
+                    vm.cityCode = cityCode;
+                    //console.log(pokemon);
+                });
+        }
 
         function click() {
         
