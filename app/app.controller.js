@@ -2,17 +2,24 @@
     'use strict';
 
     angular
-        .module('app')
-        .controller('TravelController', TravelController)
+        .module('travelApp')
+        .controller('travelCtrl', travelCtrl)
 
-    TravelController.$inject = [''];
+    travelCtrl.$inject = ['travelFactory'];
 
-    function TravelController() {
-        /* jshint validthis:true */
+    function travelCtrl(travelFactory) {
         var vm = this;
 
-        activate();
+        onActivate();
 
-        function activate() { }
+        function onActivate (){
+            travelFactory
+                .getFlightCodes()
+                .then(function(cityCode){
+                    vm.cityCode = cityCode;
+                    //console.log(pokemon);
+                });
+        }
+    
     }
 })();
