@@ -22,9 +22,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="input-group">
-                        <input type="text" ng-model = "vm.flightNumber" class="form-control" aria-label="...">
+                        <input type="text" class="form-control" aria-label="...">
                         <div class="input-group-btn">
-                            <button type="button" ng-click = "vm.onActivate(vm.flightNumber)" class="btn btn-default">Get Info About Flight:{{vm.flightNumber}}</button>
+                            <button type="button" class="btn btn-default" ng-click="vm.click()">Find Info</button>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                     <div class="panel-body">
 
                         <div class="row" ng-show="vm.info">
-                            #arrayInBIZ <!--IMG might need to wrap in a div with .text-center-->
+                            #arrayInBIZ.image_url <!--IMG might need to wrap in a div with .text-center-->
                             <h4 class="text-center">#arrayInBIZ.name</h4>
                             <hr>
 
