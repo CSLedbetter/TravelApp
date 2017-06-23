@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 
-<head ng-controller="TravelController as travCtrl">
+<head >
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-info">
+<body class="bg-info" ng-controller="TravelController as travCtrl">
     <div class="container">
         <div class="jumbotron text-white">
             <h1 class="display-2">CB Travel App</h1>
@@ -72,17 +72,17 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
                 <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" ng-click="travCtrl.click()">Yes Please!</button>
+        <button class="btn btn-secondary" type="button" ng-click="travCtrl.click()"> <a id="play-video" href="#">Yes Please!</a></button>
       </span>
             </div>
         </div>
     </div>
 
-    <div ng-show="video">
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></iframe>
+    <!--trollolololol-->
+        <div ng-show="travCtrl.show" align="center" class="embed-responsive embed-responsive-16by9">
+            <iframe id="video"style="max-width:560px; max-height: 325px;" class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
         </div>
-    </div>
+  
 
 
 
@@ -93,9 +93,14 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    
     <script src="app/app.module.js"></script>
+    
     <script src="app/app.controller.js"></script>
+    
     <script src="app/app.factory.js"></script>
+    <script src="app/app.js"></script>
+    
 </body>
 
 </html>

@@ -1,19 +1,21 @@
-(function(){
+(function () {
     'use strict';
 
     angular
         .module('app')
         .controller('TravelController', TravelController)
 
-    TravelController.$inject = [''];
+    TravelController.$inject = [];
 
     function TravelController() {
-        
+
         var vm = this;
         vm.show = false;
-   
-   function click() {
-       vm.show = true;
-   }
+        vm.click = click;
+
+        function click() {
+        
+            vm.show = true;
+        };
     }
 })();
