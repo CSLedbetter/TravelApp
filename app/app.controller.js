@@ -8,11 +8,12 @@
     TravelController.$inject = [''];
 
     function TravelController() {
-        /* jshint validthis:true */
+        
         var vm = this;
-
-        activate();
-
-        function activate() { }
+        vm.show = false;
+   
+   function click() {
+       vm.show = true;
+   }
     }
 })();
