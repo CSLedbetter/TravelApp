@@ -32,9 +32,34 @@
             travelFactory
                 .getArrivalData(citiCode)
                 .then(function (arrivalAirportInfo) {
-                    vm.arrivalAirportInfo = arrivalAirportInfo;
+                    vm.citiName = arrivalAirportInfo.data.city;
+                    vm.airportName = arrivalAirportInfo.data.name;
+                    vm.avgDelay = arrivalAirportInfo.data.status.avgDelay;
+                    vm.reason = arrivalAirportInfo.data.status.reason;
+
                     // console.log('This is the Control response')
-                     console.log(arrivalAirportInfo);
+                    getWeather(vm.citiName);
+                    getRestInfo(vm.citiName);
+                     console.log(vm.citiName);
+                });
+        }
+        function getWeather(citiName) {
+            //alert('controller working')
+            travelFactory
+                .getWeather(citiName)
+                .then(function (weatherInfo) {
+                    // vm.info=true;
+                     console.log(weatherInfo);
+                });
+        }
+        function getRestInfo(citiName) {
+            //alert('controller working')
+            travelFactory
+                .getRestInfo(citiName)
+                .then(function (restInfo) {
+                    // vm.info=true;
+                     console.log('This is the Restaurant Info:')
+                     console.log(restInfo);
                 });
         }
         // Click function to show video
@@ -50,3 +75,18 @@
     }
 
 })();
+// var arrayInfo = (response.data.list[0]);
+                    // vm.city = arrayInfo.name;
+                    // vm.lgnLat = arrayInfo.coord;
+                    // vm.lgnLatDisplay = arrayInfo.coord.lat + ', ' + arrayInfo.coord.lon;
+                    // vm.currentTemp = arrayInfo.main.temp;
+                    // vm.pressure = arrayInfo.main.pressure;
+                    // vm.humidity = arrayInfo.main.humidity;
+                    // vm.lowTemp = arrayInfo.main.temp_min;
+                    // vm.highTemp = arrayInfo.main.temp_max;
+                    // vm.windSpeed = arrayInfo.wind.speed;
+                    // var icon = arrayInfo.weather[0].icon;
+                    // vm.iconImage = 'http://openweathermap.org/img/w/' + icon + '.png';
+                    // vm.show = true;  
+                    // console.log('Here is the weather information we can use:')                 
+                    // console.log(response);

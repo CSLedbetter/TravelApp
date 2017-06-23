@@ -46,21 +46,21 @@
                     </div>
                     <div class="panel-body">
                         <div class="row" ng-show="vm.info">
-                            <h1 class="text-center">arrayData.ctiy</h1>
+                            <h1 class="text-center">{{vm.airportName}}</h1>
                             <!--Array Name .city (So it can read Denver) -->
                             <hr>
 
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Average Delay</strong></p>
-                                <p class="text-success text-center"><strong>arrayData.status.avgDelay</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.avgDelay}}</strong></p>
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Closures</strong></p>
-                                <p class="text-success text-center"><strong>arrayData.status.closureBegin</strong></p>
+                                <p class="text-success text-center"><strong>None</strong></p>
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Reason</strong></p>
-                                <p class="text-success text-center"><strong>arrayData.status.reason</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.reason}}</strong></p>
                             </div>
                         </div>
                     </div>

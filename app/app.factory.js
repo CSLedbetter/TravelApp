@@ -12,6 +12,7 @@
              getFlightCodes: getFlightCodes
             ,getArrivalData: getArrivalData
             ,getRestInfo: getRestInfo
+            ,getWeather: getWeather
         };
 
         return service;
@@ -48,9 +49,9 @@
                     }
                 })
                 .then(function (response) {
-                    // console.log('This is the information about the resturaunts from yelp:')
-                    // console.log(response);
-                   // return response;
+                    //  console.log('This is the information about the resturaunts from yelp:')
+                    //  console.log(response);
+                   return response;
                 });
         }
 
@@ -60,21 +61,7 @@
                 .get('http://api.openweathermap.org/data/2.5/find?q=' + cityName +
                     '&units=imperial&APPID=0a400011d9062149daf9b1e3ca91d3d1')
                 .then(function (response) {
-                    // var arrayInfo = (response.data.list[0]);
-                    // vm.city = arrayInfo.name;
-                    // vm.lgnLat = arrayInfo.coord;
-                    // vm.lgnLatDisplay = arrayInfo.coord.lat + ', ' + arrayInfo.coord.lon;
-                    // vm.currentTemp = arrayInfo.main.temp;
-                    // vm.pressure = arrayInfo.main.pressure;
-                    // vm.humidity = arrayInfo.main.humidity;
-                    // vm.lowTemp = arrayInfo.main.temp_min;
-                    // vm.highTemp = arrayInfo.main.temp_max;
-                    // vm.windSpeed = arrayInfo.wind.speed;
-                    // var icon = arrayInfo.weather[0].icon;
-                    // vm.iconImage = 'http://openweathermap.org/img/w/' + icon + '.png';
-                    // vm.show = true;  
-                    // console.log('Here is the weather information we can use:')                 
-                    // console.log(response);
+                    return response;
                 });
           
         }
