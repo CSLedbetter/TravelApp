@@ -31,31 +31,156 @@
             </div>
 
         </div>
-        <!--form content -->
+        <!--Search input with button-->
 
 
-        <div>
 
-        <!--spaceers basically until I can find a better options (text set to transparent so it does not show)-->
-        <div>
-            <h1 class="invis">Invis</h1>
-            <h1 class="invis">Invis</h1>
-            <h1 class="invis">Invis</h1>
-            <br>
+
+
+        <!--form content/panels -->
+        <div class="col-md-12 searchInfo">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Fligh/Airport Status and info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" ng-show="vm.info">
+                            <h1 class="text-center">arrayData.ctiy</h1>
+                            <!--Array Name .city (So it can read Denver) -->
+                            <hr>
+
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Average Delay</strong></p>
+                                <p class="text-success text-center"><strong>arrayData.status.avgDelay</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Closures</strong></p>
+                                <p class="text-success text-center"><strong>arrayData.status.closureBegin</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Reason</strong></p>
+                                <p class="text-success text-center"><strong>arrayData.status.reason</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Weather</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row" ng-show="vm.info">
+                            <h1 class="text-center">list.0.coord.lat, list.0.coord.long</h1>
+                            <hr>
+
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Temperature</strong></p>
+                                <p class="text-success text-center"><strong>list.0.main.</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Humidity</strong></p>
+                                <p class="text-success text-center"><strong>list.0.main.humidity</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Temperature (F)</strong></p>
+                                <p class="text-success text-center"><strong>list.0.main.temp</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="vm.info">
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Lowest Temp (F)</strong></p>
+                                <p class="text-success text-center"><strong>list.0.main.temp_min</strong></p>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Highest Temp (F)</strong></p>
+                                <p class="text-success text-center"><strong>list.0.main.temp_max</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Wind Speed</strong></p>
+                                <p class="text-success text-center"><strong>list.0.wind.speed</strong></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Yelp</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row" ng-show="vm.info">
+                            <h1 class="text-center">Top 10 Restaurants</h1>
+                            <hr>
+                            <!--************************************
+                            might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
+                            ************************************-->
+                            <ul class="list-group col-md-12">
+                                <button ng-click="pokemonCtrl.loadPokemon(pokemon.url)" ng-repeat="pokemon in pokemonCtrl.pokeArray" class="list-group-item">
+                                    {{pokemon.name}}
+                                </button>
+                            </ul>
+                            <!--************************************-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Selected yelp info</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row" ng-show="vm.info">
+                            #arrayInBIZ <!--IMG might need to wrap in a div with .text-center-->
+                            <h4 class="text-center">#arrayInBIZ.name</h4>
+                            <hr>
+
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Temperature</strong></p>
+                                <p class="text-success text-center"><strong>#arrayInBIZ</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Pressure</strong></p>
+                                <p class="text-success text-center"><strong>#arrayInBIZ</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Website</strong></p>
+                                <p class="text-success text-center"><a src="...">Go to Website</a></p>
+                                <!--   {{#arrayinBIZ.url}}     goes here!    ^        -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <br>
+        <!--form content/panels -->
+
 
 
         <!--"NewsLetter" input-->
-        <div class="col-lg-6 col-md-offset-3">
+        <div class="col-lg-6 col-md-offset-3" id="freeVirus">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
                 <span class="input-group-btn">
-                     <button class="btn btn-default" type="button" ng-click="vm.click()"> <a id="play-video" href="#">Yes Please!</a></button>
+                     <button class="btn btn-default" type="button" ng-click="vm.clickVid()"> <a id="play-video" href="#">Yes Please!</a></button>
                 </span>
             </div>
         </div>
-
+        <!--"NewsLetter" input-->
 
 
         <!--trollolololol-->
@@ -65,17 +190,18 @@
                     frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
+        <!--trollolololol-->
 
-    </div>
 
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="app/app.module.js"></script>
-    <script src="app/app.controller.js"></script>
-    <script src="app/app.factory.js"></script>
-    <script src="app/app.js"></script>
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="app/app.module.js"></script>
+        <script src="app/app.controller.js"></script>
+        <script src="app/app.factory.js"></script>
+        <script src="app/app.js"></script>
 
 </body>
 

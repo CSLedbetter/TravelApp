@@ -7,6 +7,9 @@ body {
    background: url('http://www.unforgettablehoneymoons.com/uploads/galleries/galleries_87_image_lg.jpg') no-repeat 0 0;
    background-size: 100%;
 }
-.invis {
-    color: transparent;
+.searchInfo {
+    margin-top: 4em;
+}
+#freeVirus {
+    margin-top: 6em;
 }
