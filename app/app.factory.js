@@ -34,7 +34,7 @@
                     getRestInfo(citiName);
                 });
         }
-
+            //https://api.yelp.com/v3/businesses/search?term=restaurants&location=denver&sort_by=rating
         function getRestInfo(citiName) {
             return $http
                 .get('https://api.yelp.com/v3/businesses/search?term=restaurants&location='+ citiName + '&sort_by=rating', {

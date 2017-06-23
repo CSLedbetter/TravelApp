@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="travelApp">
 
-<head ng-controller="travelCtrl as vm">
+<head >
     <title>Travel App</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,23 +9,80 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="bg-info" ng-controller="travelCtrl as vm">
     <div class="container">
-        <h1 on-click "">Hello World</h1>
+        <div class="jumbotron text-white">
+            <h1 class="display-2">CB Travel App</h1>
+            <p class="lead"> An app to find the weather and food of your destination</p>
+        </div>
+        <div class="row">
+            <div class="photoCoverInlay col-lg-12">
+
+                <div class="formContent text-center ">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="...">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="...">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--form content -->
+                </div>
+                <!--photocover -->
+
+            </div>
+
+            <div>
+                <h1 class="invis">Invis</h1>
+                <h1 class="invis">Invis</h1>
+                <h1 class="invis">Invis</h1>
+                <h1 class="invis">Invis</h1>
+            </div>
 
 
+        </div>
 
+        <div class="col-lg-6 col-md-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
+                <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" ng-click="travCtrl.click()"> <a id="play-video" href="#">Yes Please!</a></button>
+      </span>
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
+    <!--trollolololol-->
+        <div ng-show="travCtrl.show" align="center" class="embed-responsive embed-responsive-16by9">
+            <iframe id="video"style="max-width:560px; max-height: 325px;" class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+  
 
 
 
@@ -36,9 +93,14 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    
     <script src="app/app.module.js"></script>
+    
     <script src="app/app.controller.js"></script>
+    
     <script src="app/app.factory.js"></script>
+    <script src="app/app.js"></script>
+    
 </body>
 
 </html>

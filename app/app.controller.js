@@ -1,4 +1,4 @@
-(function(){
+(function () {
     'use strict';
 
     angular
@@ -9,7 +9,8 @@
 
     function travelCtrl(travelFactory) {
         var vm = this;
-
+         vm.show = false;
+        vm.click = click;
         onActivate();
 
         function onActivate (){
@@ -20,6 +21,10 @@
                     //console.log(pokemon);
                 });
         }
-    
+
+        function click() {
+        
+            vm.show = true;
+        };
     }
 })();
