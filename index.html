@@ -22,9 +22,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="input-group">
-                        <input type="text" class="form-control" aria-label="...">
+                        <input type="text" class="form-control" ng-model="vm.flightNumber" aria-label="...">
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="vm.click()">Find Info</button>
+                            <button type="button" class="btn btn-default" ng-click="vm.onActivate(vm.flightNumber)">Get Info About Flight: {{vm.flightNumber}}</button>
                         </div>
                     </div>
                 </div>

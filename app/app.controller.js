@@ -21,7 +21,7 @@
             travelFactory
                 .getFlightCodes(flightNumber)
                 .then(function (citiCode) {
-
+                    vm.info=true;
                     getCitiName(citiCode);
                     // console.log('This is the Control response')
                     // console.log(citiCode);
