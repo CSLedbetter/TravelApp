@@ -13,7 +13,6 @@
         vm.info = false;
         vm.click = click;
         vm.onActivate = onActivate;
-        
         vm.clickVid = clickVid
 
         function onActivate(flightNumber) {
@@ -59,7 +58,10 @@
                 .then(function (restInfo) {
                     // vm.info=true;
                      console.log('This is the Restaurant Info:')
-                     console.log(restInfo);
+                    //  console.log(restInfo);
+                     vm.businesses = restInfo.data.businesses;
+                
+                     console.log(vm.businesses);
                 });
         }
         // Click function to show video
