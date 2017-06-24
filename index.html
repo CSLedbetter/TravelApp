@@ -116,14 +116,14 @@
                     <div class="panel-body">
 
                         <div class="row" ng-show="vm.info">
-                            <h1 class="text-center">Top 10 Restaurants</h1>
+                            <h1 class="text-center">Top 20 Restaurants</h1>
                             <hr>
                             <!--************************************
                             might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
                             ************************************-->
                             <ul class="list-group col-md-12">
-                                <button ng-click="pokemonCtrl.loadPokemon(pokemon.url)" ng-repeat="pokemon in pokemonCtrl.pokeArray" class="list-group-item">
-                                    {{pokemon.name}}
+                                <button  ng-click="" ng-repeat="business in vm.businesses" class="list-group-item">
+                                    {{vm.businesses[$index].name}}
                                 </button>
                             </ul>
                             <!--************************************-->
@@ -150,10 +150,11 @@
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Rating</strong></p>
-                                <p class="text-success text-center"><strong>#arrayInBIZ</strong></p>
+                                <p class="text-success text-center"><strong>#arrayInBIZ.rating/price</strong></p>
                             </div>
                             <div class="col-sm-4">
-                                <p class="text-center"><strong>Website</strong></p>
+                                <p class="text-center"><strong>About</strong></p>
+                                <p class="text-success text-center"><strong>#arrayInBIZ.location.address 1 arrayInBIZ.location.display_address[1]</strong></p>
                                 <p class="text-success text-center"><a src="...">Go to Website</a></p>
                                 <!--   {{#arrayinBIZ.url}}     goes here!    ^        -->
                             </div>
