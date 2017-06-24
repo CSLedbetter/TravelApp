@@ -47,8 +47,22 @@
             //alert('controller working')
             travelFactory
                 .getWeather(citiName)
-                .then(function (weatherInfo) {
-                    // vm.info=true;
+                .then(function (response) {
+                    var arrayInfo = (response.data.list[0]);
+                    vm.city = arrayInfo.name;
+                    vm.lgnLat = arrayInfo.coord;
+                    vm.lgnLatDisplay = arrayInfo.coord.lat + ', ' + arrayInfo.coord.lon;
+                    vm.currentTemp = arrayInfo.main.temp;
+                    vm.pressure = arrayInfo.main.pressure;
+                    vm.humidity = arrayInfo.main.humidity;
+                    vm.lowTemp = arrayInfo.main.temp_min;
+                    vm.highTemp = arrayInfo.main.temp_max;
+                    vm.windSpeed = arrayInfo.wind.speed;
+                    var icon = arrayInfo.weather[0].icon;
+                    vm.iconImage = 'http://openweathermap.org/img/w/' + icon + '.png';
+                    vm.show = true;  
+                    // console.log('Here is the weather information we can use:')                 
+                    // console.log(response);
                      console.log(weatherInfo);
                 });
         }
@@ -75,18 +89,4 @@
     }
 
 })();
-// var arrayInfo = (response.data.list[0]);
-                    // vm.city = arrayInfo.name;
-                    // vm.lgnLat = arrayInfo.coord;
-                    // vm.lgnLatDisplay = arrayInfo.coord.lat + ', ' + arrayInfo.coord.lon;
-                    // vm.currentTemp = arrayInfo.main.temp;
-                    // vm.pressure = arrayInfo.main.pressure;
-                    // vm.humidity = arrayInfo.main.humidity;
-                    // vm.lowTemp = arrayInfo.main.temp_min;
-                    // vm.highTemp = arrayInfo.main.temp_max;
-                    // vm.windSpeed = arrayInfo.wind.speed;
-                    // var icon = arrayInfo.weather[0].icon;
-                    // vm.iconImage = 'http://openweathermap.org/img/w/' + icon + '.png';
-                    // vm.show = true;  
-                    // console.log('Here is the weather information we can use:')                 
-                    // console.log(response);
+                    
