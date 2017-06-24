@@ -16,14 +16,12 @@
         vm.clickVid = clickVid
 
         function onActivate(flightNumber) {
-            //alert('controller working')
             travelFactory
                 .getFlightCodes(flightNumber)
                 .then(function (citiCode) {
                     vm.info=true;
+                    console.log(citiCode);
                     getCitiName(citiCode);
-                    // console.log('This is the Control response')
-                    // console.log(citiCode);
                 });
         }
         function getCitiName(citiCode) {
@@ -36,10 +34,9 @@
                     vm.avgDelay = arrivalAirportInfo.data.status.avgDelay;
                     vm.reason = arrivalAirportInfo.data.status.reason;
 
-                    // console.log('This is the Control response')
+                    
                     getWeather(vm.citiName);
                     getRestInfo(vm.citiName);
-                     console.log(vm.citiName);
                 });
         }
         function getWeather(citiName) {
@@ -60,9 +57,6 @@
                     var icon = arrayInfo.weather[0].icon;
                     vm.iconImage = 'http://openweathermap.org/img/w/' + icon + '.png';
                     vm.show = true;  
-                    // console.log('Here is the weather information we can use:')                 
-                    // console.log(response);
-                     console.log(weatherInfo);
                 });
         }
         function getRestInfo(citiName) {
@@ -71,11 +65,7 @@
                 .getRestInfo(citiName)
                 .then(function (restInfo) {
                     // vm.info=true;
-                     console.log('This is the Restaurant Info:')
-                    //  console.log(restInfo);
                      vm.businesses = restInfo.data.businesses;
-                
-                     console.log(vm.businesses);
                 });
         }
         // Click function to show video
