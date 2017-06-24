@@ -43,7 +43,7 @@
         }
         function getRestInfo(citiName) {
             return $http
-                .get('https://origin-yelp-api.herokuapp.com/v3/businesses/search?term=restaurants&location=denver&sort_by=rating', {
+                .get('https://origin-yelp-api.herokuapp.com/v3/businesses/search?term=restaurants&location='+citiName+'&sort_by=rating', {
                     headers: {
                         'Authorization': 'Bearer cBGBDuqc1jCkQWfbTTrGw4ZII348RHKnf-OIwNPLvfq4gZ02vH8PcWY2g61PWOKnealVZK6VK7SXWEfIeQK_C8-BwBlu0WMuhZSDKzk1mpXWyLGEijDHmbyaIEFNWXYx'
                     }
