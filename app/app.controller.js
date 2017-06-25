@@ -13,30 +13,44 @@
         vm.info = false;
         vm.click = click;
         vm.onActivate = onActivate;
-        vm.clickVid = clickVid
 
         function onActivate(flightNumber) {
             travelFactory
                 .getFlightCodes(flightNumber)
-                .then(function (citiCode) {
+                .then(function (response) {
                     vm.info=true;
-                    console.log(citiCode);
-                    getCitiName(citiCode);
+                    var arrivalCityCode = response.data.response[0].arrival;
+                    var departCityCode =  response.data.response[0].departure;
+                    // console.log(citiCode);
+                    // console.log(response);
+                    getArrivalCityName(arrivalCityCode);
+                    getDepartureCityName(departCityCode);
                 });
         }
-        function getCitiName(citiCode) {
+        function getArrivalCityName(arrivalCityCode) {
 
             travelFactory
-                .getArrivalData(citiCode)
+                .getAirportData(arrivalCityCode)
                 .then(function (arrivalAirportInfo) {
-                    vm.citiName = arrivalAirportInfo.data.city;
-                    vm.airportName = arrivalAirportInfo.data.name;
-                    vm.avgDelay = arrivalAirportInfo.data.status.avgDelay;
-                    vm.reason = arrivalAirportInfo.data.status.reason;
+                    vm.arrivalCityName = arrivalAirportInfo.data.city;
+                    vm.arrivalAirportName = arrivalAirportInfo.data.name;
+                    vm.arrivalAvgDelay = arrivalAirportInfo.data.status.avgDelay;
+                    vm.arrivalReason = arrivalAirportInfo.data.status.reason;
 
                     
-                    getWeather(vm.citiName);
-                    getRestInfo(vm.citiName);
+                    getWeather(vm.arrivalCityName);
+                    getRestInfo(vm.arrivalCityName);
+                });
+        }
+        function getDepartureCityName(departCityCode) {
+
+            travelFactory
+                .getAirportData(departCityCode)
+                .then(function (departAirportInfo) {
+                    vm.departCityName = departAirportInfo.data.city;
+                    vm.departAirportName = departAirportInfo.data.name;
+                    vm.departavgDelay = departAirportInfo.data.status.avgDelay;
+                    vm.departreason = departAirportInfo.data.status.reason;
                 });
         }
         function getWeather(citiName) {
@@ -66,13 +80,9 @@
                 .then(function (restInfo) {
                     // vm.info=true;
                      vm.businesses = restInfo.data.businesses;
+                     //console.log(restInfo);
                 });
         }
-        // Click function to show video
-        function clickVid() {
-
-            vm.show = true;
-        };
         // click function to show flight info
         function click() {
 

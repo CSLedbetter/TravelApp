@@ -46,10 +46,17 @@
                     </div>
                     <div class="panel-body">
                         <div class="row" ng-show="vm.info">
-                            <h1 class="text-center">{{vm.airportName}}</h1>
+                            <h5 class="text-center">Airport information for your flight from {{vm.departCityName}}
+                                to {{vm.arrivalCityName}}  
+                            </h5>
                             <!--Array Name .city (So it can read Denver) -->
                             <hr>
 
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Airport</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.departAirportName}}</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.arrivalAirportName}}</strong></p>
+                            </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Average Delay</strong></p>
                                 <p class="text-success text-center"><strong>{{vm.avgDelay}}</strong></p>
@@ -173,7 +180,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
                 <span class="input-group-btn">
-                     <button class="btn btn-default" type="button" ng-click="vm.clickVid()"> <a id="play-video" href="#">Yes Please!</a></button>
+                     <button class="btn btn-default" type="button" ng-click="vm.showVideo=true"> <a id="play-video" href="#">Yes Please!</a></button>
                 </span>
             </div>
         </div>
@@ -182,8 +189,9 @@
 
         <!--trollolololol-->
         <div class="col-md-6 col-md-offset-3 text-center">
-            <div ng-show="vm.show" class="embed-responsive embed-responsive-16by9">
-                <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
+            <div ng-hide="!vm.showVideo" class="embed-responsive embed-responsive-16by9">
+                <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center"
+                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
                     frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
