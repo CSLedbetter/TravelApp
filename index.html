@@ -129,9 +129,9 @@
                             might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
                             ************************************-->
                             <ul class="list-group col-md-12">
-                                <button  ng-click="" ng-repeat="business in vm.businesses" class="list-group-item">
-                                    {{vm.businesses[$index].name}}
-                                </button>
+                                <button ng-repeat="business in vm.businesses" class="list-group-item">
+                                    <a ng-click="vm.getOneRestInfo($index)"> {{vm.businesses[$index].name}}</a>
+                                </button><!--"vm.getOneRestInfo($index)"-->
                             </ul>
                             <!--************************************-->
                         </div>

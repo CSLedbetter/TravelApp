@@ -9,6 +9,7 @@
 
     function travelCtrl(travelFactory) {
         var vm = this;
+        var restaurants={};
         vm.show = false;
         vm.info = false;
         vm.click = click;
@@ -80,9 +81,17 @@
                 .then(function (restInfo) {
                     // vm.info=true;
                      vm.businesses = restInfo.data.businesses;
-                     //console.log(restInfo);
+                     restaurants = restInfo.data.businesses;
+                     //console.log(vm.businesses);
                 });
         }
+
+        function getOneRestInfo($index) {
+            alert('pick rest is working');
+            var pickRestaurant = restaurants[$index];
+            console.log(pickRestaurant);
+        }
+        
         // click function to show flight info
         function click() {
 

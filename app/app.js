@@ -5,6 +5,11 @@ $(document).ready(function() {
     ev.preventDefault();
  
   });
+
+    $('.carousel').carousel({
+  interval: 2000
+})
+
 });
 
 // allows on button click to play embedded youtube video
