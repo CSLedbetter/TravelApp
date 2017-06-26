@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+var restaurants={};
 
     angular
         .module('travelApp')
@@ -9,11 +10,11 @@
 
     function travelCtrl(travelFactory) {
         var vm = this;
-        var restaurants={};
         vm.show = false;
         vm.info = false;
         vm.click = click;
         vm.onActivate = onActivate;
+        vm.getOneRestInfo = getOneRestInfo;
 
         function onActivate(flightNumber) {
             travelFactory
@@ -75,7 +76,6 @@
                 });
         }
         function getRestInfo(citiName) {
-            //alert('controller working')
             travelFactory
                 .getRestInfo(citiName)
                 .then(function (restInfo) {
@@ -85,13 +85,22 @@
                      //console.log(vm.businesses);
                 });
         }
+        function getOneRestInfo(index) {
+            var pickRestaurant = restaurants[index];
+            vm.restName = pickRestaurant.name;
+            vm.phone =  pickRestaurant.phone;
+            vm.price = pickRestaurant.price;
+            vm.rating = pickRestaurant.rating;
+            vm.coordinates = pickRestaurant.coordinates;
+            vm.url  = pickRestaurant.url;
+            vm.catagories = pickRestaurant.catagories;
+            vm.address = pickRestaurant.location.display_address;
+            vm.image = pickRestaurant.image_url;
 
-        function getOneRestInfo($index) {
-            alert('pick rest is working');
-            var pickRestaurant = restaurants[$index];
+
             console.log(pickRestaurant);
+
         }
-        
         // click function to show flight info
         function click() {
 
