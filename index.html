@@ -126,7 +126,7 @@
                             might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
                             ************************************-->
                             <ul class="list-group col-md-12">
-                                <button  ng-click="" ng-repeat="business in vm.businesses" class="list-group-item">
+                                <button  ng-click="vm.passArray(business[$index].name)" ng-repeat="business in vm.businesses" class="list-group-item">
                                     {{vm.businesses[$index].name}}
                                 </button>
                             </ul>
@@ -144,13 +144,13 @@
                     <div class="panel-body">
 
                         <div class="row" ng-show="vm.info">
-                            #arrayInBIZ.image_url <!--IMG might need to wrap in a div with .text-center-->
+                           <div class="text-center"> #arrayInBIZ.image_url</div>
                             <h4 class="text-center">#arrayInBIZ.name</h4>
                             <hr>
 
                             <div class="col-sm-4">
-                                <p class="text-center"><strong></strong></p>
-                                <p class="text-success text-center"><strong>#arrayInBIZ</strong></p>
+                                <p class="text-center"><strong>Contact</strong></p>
+                                <p class="text-success text-center"><strong>#arrayInBIZ.phone</strong></p>
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Rating</strong></p>

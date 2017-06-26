@@ -14,6 +14,7 @@
         vm.click = click;
         vm.onActivate = onActivate;
         vm.clickVid = clickVid
+        vm.toggle = false;
 
         function onActivate(flightNumber) {
             //alert('controller working')
@@ -39,7 +40,8 @@
                     // console.log('This is the Control response')
                     getWeather(vm.citiName);
                     getRestInfo(vm.citiName);
-                     console.log(vm.citiName);
+                
+                     console.log(vm.clickName);
                 });
         }
         function getWeather(citiName) {
@@ -48,7 +50,7 @@
                 .getWeather(citiName)
                 .then(function (weatherInfo) {
                     // vm.info=true;
-                     console.log(weatherInfo);
+
                 });
         }
         function getRestInfo(citiName) {
@@ -57,13 +59,21 @@
                 .getRestInfo(citiName)
                 .then(function (restInfo) {
                     // vm.info=true;
-                     console.log('This is the Restaurant Info:')
-                    //  console.log(restInfo);
-                     vm.businesses = restInfo.data.businesses;
                 
-                     console.log(vm.businesses);
+                     vm.businesses = restInfo.data.businesses;
+                     console.log(vm.test);
+                     
+
                 });
         }
+
+        function passArray() {
+            
+        }
+
+
+
+
         // Click function to show video
         function clickVid() {
 
