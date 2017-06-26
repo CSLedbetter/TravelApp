@@ -38,7 +38,11 @@ var restaurants={};
                     vm.arrivalCityName = arrivalAirportInfo.data.city;
                     vm.arrivalAirportName = arrivalAirportInfo.data.name;
                     vm.arrivalAvgDelay = arrivalAirportInfo.data.status.avgDelay;
+                    if (vm.arrivalAvgDelay == "") {vm.arrivalAvgDelay = "None"}
+                    vm.arrivalClosure = arrivalAirportInfo.data.status.closureBegin;
+                    if (vm.arrivalClosure == "") {vm.arrivalClosure = "None"}
                     vm.arrivalReason = arrivalAirportInfo.data.status.reason;
+                    console.log(arrivalAirportInfo);
 
                     
                     getWeather(vm.arrivalCityName);
@@ -52,8 +56,12 @@ var restaurants={};
                 .then(function (departAirportInfo) {
                     vm.departCityName = departAirportInfo.data.city;
                     vm.departAirportName = departAirportInfo.data.name;
-                    vm.departavgDelay = departAirportInfo.data.status.avgDelay;
-                    vm.departreason = departAirportInfo.data.status.reason;
+                    vm.departAvgDelay = departAirportInfo.data.status.avgDelay;
+                    if (vm.departAvgDelay == "") {vm.departAvgDelay = "None"}
+                    vm.departClosure = departAirportInfo.data.status.closureBegin;
+                    if (vm.departClosure == "") {vm.departClosure = "None"}
+                    vm.departReason = departAirportInfo.data.status.reason;
+                    console.log(departAirportInfo);
                 });
         }
         function getWeather(citiName) {
@@ -98,7 +106,7 @@ var restaurants={};
             vm.image = pickRestaurant.image_url;
             vm.restInfo = true;
 
-            console.log(pickRestaurant);
+            //console.log(pickRestaurant);
 
         }
         // click function to show flight info

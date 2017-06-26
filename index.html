@@ -51,24 +51,29 @@
                             </h5>
                             <!--Array Name .city (So it can read Denver) -->
                             <hr>
-
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Airport</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.departAirportName}}</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.arrivalAirportName}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Average Delay</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.avgDelay}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Closures</strong></p>
-                                <p class="text-success text-center"><strong>None</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Reason</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.reason}}</strong></p>
-                            </div>
+                            <table class="table table-striped">               
+                            <tr>
+                                <td ></td>    
+                                <td class="text-center"><strong>Airport</strong></td>
+                                <td class="text-center "><strong>Average Delay</strong></td>
+                                <td class="text-center"><strong>Closures</strong></td>
+                                <td class="text-center"><strong>Reason</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><strong>Departing:</strong></td>
+                                <td class="text-success text-center">{{vm.departAirportName}}</td>
+                                <td class="text-danger text-center ">{{vm.departAvgDelay}}</td>
+                                <td class="text-success text-center">{{vm.departClosure}}</td>
+                                <td class="text-success text-center">{{vm.departReason}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><strong>Arriving:</strong></td>
+                                <td class="text-success text-center">{{vm.arrivalAirportName}}</td>
+                                <td class="text-danger text-center">{{vm.arrivalAvgDelay}}</td>
+                                <td class="text-success text-center">{{vm.arrivalClosure}}</td>
+                                <td class="text-success text-center">{{vm.arrivalReason}}</td>
+                            </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
