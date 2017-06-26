@@ -46,10 +46,17 @@
                     </div>
                     <div class="panel-body">
                         <div class="row" ng-show="vm.info">
-                            <h1 class="text-center">{{vm.airportName}}</h1>
+                            <h5 class="text-center">Airport information for your flight from {{vm.departCityName}}
+                                to {{vm.arrivalCityName}}  
+                            </h5>
                             <!--Array Name .city (So it can read Denver) -->
                             <hr>
 
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Airport</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.vm.departAirportName}}</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.arrivalAirportName}}</strong></p>
+                            </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Average Delay</strong></p>
                                 <p class="text-success text-center"><strong>{{vm.avgDelay}}</strong></p>
@@ -73,41 +80,37 @@
                         <h3 class="panel-title">Weather</h3>
                     </div>
                     <div class="panel-body">
-
-                        <div class="row" ng-show="vm.info">
-                            <h1 class="text-center">list.0.coord.lat, list.0.coord.long</h1>
-                            <hr>
-
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Temperature</strong></p>
-                                <p class="text-success text-center"><strong>list.0.main.</strong></p>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">City Information</h3>
                             </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Humidity</strong></p>
-                                <p class="text-success text-center"><strong>list.0.main.humidity</strong></p>
+                            <div class="panel-body" ng-hide="!vm.info">
+                                <div style="width: 100%; margin: 0; text-align:center">
+                                    <img style = "float: left" src={{vm.iconImage}} >
+                                    <h1>{{vm.city}}</h1>
+                                    <h4>{{vm.lgnLatDisplay}}</h4>
+                                </div>
+                                <div class = "cityDiv">
+                                    <div class="cityInfo">
+                                        <label>Temperature(F)</label>
+                                        <p>{{vm.currentTemp}}</p>
+                                        <label>Lowest Temp (F)</label>
+                                        <p>{{vm.lowTemp}}</p>    
+                                    </div>
+                                    <div class="cityInfo">
+                                        <label>Pressure</label>
+                                        <p>{{vm.pressure }}</p>
+                                        <label>Highest Temp(F)</label>
+                                        <p>{{vm.highTemp}}</p> 
+                                    </div>
+                                    <div class= "cityInfo">
+                                        <label>Humidity</label>
+                                        <p>{{vm.humidity}}</p>
+                                        <label>Wind Speed</label>
+                                        <p>{{vm.windSpeed}}mph</p> 
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Temperature (F)</strong></p>
-                                <p class="text-success text-center"><strong>list.0.main.temp</strong></p>
-                            </div>
-                        </div>
-
-                        <div class="row" ng-show="vm.info">
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Lowest Temp (F)</strong></p>
-                                <p class="text-success text-center"><strong>list.0.main.temp_min</strong></p>
-
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Highest Temp (F)</strong></p>
-                                <p class="text-success text-center"><strong>list.0.main.temp_max</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Wind Speed</strong></p>
-                                <p class="text-success text-center"><strong>list.0.wind.speed</strong></p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -120,15 +123,15 @@
                     <div class="panel-body">
 
                         <div class="row" ng-show="vm.info">
-                            <h1 class="text-center">Top 20 Restaurants</h1>
+                            <h1 class="text-center">Top 10 Restaurants in {{vm.city}}</h1>
                             <hr>
                             <!--************************************
                             might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
                             ************************************-->
                             <ul class="list-group col-md-12">
-                                <button  ng-click="vm.passArray(business[$index].name)" ng-repeat="business in vm.businesses" class="list-group-item">
-                                    {{vm.businesses[$index].name}}
-                                </button>
+                                <button ng-repeat="business in vm.businesses" class="list-group-item">
+                                    <a ng-click="vm.getOneRestInfo($index)"> {{vm.businesses[$index].name}}</a>
+                                </button><!--"vm.getOneRestInfo($index)"-->
                             </ul>
                             <!--************************************-->
                         </div>
@@ -144,23 +147,35 @@
                     <div class="panel-body">
 
                         <div class="row" ng-show="vm.info">
-                           <div class="text-center"> #arrayInBIZ.image_url</div>
-                            <h4 class="text-center">#arrayInBIZ.name</h4>
+                            <img style = "max-width: 200px" src="{{vm.image}}" ><!--IMG might need to wrap in a div with .text-center-->
+                            <h4 class="text-center">{{vm.restName}}</h4>
                             <hr>
 
                             <div class="col-sm-4">
-                                <p class="text-center"><strong>Contact</strong></p>
-                                <p class="text-success text-center"><strong>#arrayInBIZ.phone</strong></p>
+                                <p class="text-center"><strong></strong></p>
+                                <p class="text-success text-center"><strong>{{vm.restName}}</strong></p>
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Rating</strong></p>
-                                <p class="text-success text-center"><strong>#arrayInBIZ.rating/price</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.rating}}</strong></p>
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>About</strong></p>
-                                <p class="text-success text-center"><strong>#arrayInBIZ.location.address 1 arrayInBIZ.location.display_address[1]</strong></p>
-                                <p class="text-success text-center"><a src="...">Go to Website</a></p>
+                                <p class="text-success text-center"><strong>Price:{{vm.price}}</strong></p>
+                                <p class="text-success text-center"><strong>Rating:{{vm.rating}}</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.address[0]}}</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.address[1]}}</strong></p>
+                                <p class="text-success text-center"><a src="{{vm.url}}">Go to Website</a></p>
                                 <!--   {{#arrayinBIZ.url}}     goes here!    ^        -->
+                                <!--vm.restName = pickRestaurant.name;
+                                <!- vm.phone =  pickRestaurant.phone;
+                                vm.price = pickRestaurant.price;
+                                vm.rating = pickRestaurant.rating;
+                                vm.coordinates = pickRestaurant.coordinates;
+                                vm.url  = pickRestaurant.url;
+                                vm.catagories = pickRestaurant.catagories;
+                                vm.address = pickRestaurant.display_address;
+                                vm.image = pickRestaurant.image_url;-->
                             </div>
                         </div>
                     </div>
@@ -177,7 +192,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
                 <span class="input-group-btn">
-                     <button class="btn btn-default" type="button" ng-click="vm.clickVid()"> <a id="play-video" href="#">Yes Please!</a></button>
+                     <button class="btn btn-default" type="button" ng-click="vm.showVideo=true"> <a id="play-video" href="#">Yes Please!</a></button>
                 </span>
             </div>
         </div>
@@ -186,8 +201,9 @@
 
         <!--trollolololol-->
         <div class="col-md-6 col-md-offset-3 text-center">
-            <div ng-show="vm.show" class="embed-responsive embed-responsive-16by9">
-                <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
+            <div ng-hide="!vm.showVideo" class="embed-responsive embed-responsive-16by9">
+                <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center"
+                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
                     frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
