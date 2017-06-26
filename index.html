@@ -40,7 +40,7 @@
         <!--form content/panels -->
         <div class="col-md-12 searchInfo">
             <div class="col-md-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Flight/Airport Status and info</h3>
                     </div>
@@ -49,43 +49,29 @@
                             <h5 class="text-center">Airport information for your flight from {{vm.departCityName}} to {{vm.arrivalCityName}}
                             </h5>
                             <!--Array Name .city (So it can read Denver) -->
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <p class="text-center"><strong>Depart Airport</strong></p>
-                                    <p class="text-success text-center"><strong>{{vm.departAirportName}}</strong></p>
-
-                                </div>
-                                <div class="col-sm-4">
-                                    <p class="text-center"><strong>Average Delay</strong></p>
-                                    <p class="text-danger text-center"><strong>{{vm.avgDelay}}</strong></p>
-                                </div>
-                                <!--<div class="col-sm-4">
-                                <p class="text-center"><strong>Closures</strong></p>
-                                <p class="text-success text-center"><strong>None</strong></p>
-                            </div>-->
-                                <div class="col-sm-4">
-                                    <p class="text-center"><strong>Reason</strong></p>
-                                    <p class="text-success text-center"><strong>{{vm.departReason}}</strong></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <p class="text-center"><strong>Arrival Airport</strong></p>
-                                    <p class="text-success text-center"><strong>{{vm.arrivalAirportName}}</strong></p>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <p class="text-center"><strong>Average Delay</strong></p>
-                                    <p class="text-danger text-center"><strong>{{vm.avgDelay}}</strong></p>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <p class="text-center"><strong>Reason</strong></p>
-                                    <p class="text-success text-center"><strong>{{vm.arrivalReason}}</strong></p>
-                                </div>
-
-                            </div>
+                            <table class="table table-striped">
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center"><strong>Airport</strong></td>
+                                    <td class="text-center "><strong>Average Delay</strong></td>
+                                    <td class="text-center"><strong>Closures</strong></td>
+                                    <td class="text-center"><strong>Reason</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><strong>Departing:</strong></td>
+                                    <td class="text-success text-center">{{vm.departAirportName}}</td>
+                                    <td class="text-danger text-center ">{{vm.departAvgDelay}}</td>
+                                    <td class="text-success text-center">{{vm.departClosure}}</td>
+                                    <td class="text-success text-center">{{vm.departReason}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><strong>Arriving:</strong></td>
+                                    <td class="text-success text-center">{{vm.arrivalAirportName}}</td>
+                                    <td class="text-danger text-center">{{vm.arrivalAvgDelay}}</td>
+                                    <td class="text-success text-center">{{vm.arrivalClosure}}</td>
+                                    <td class="text-success text-center">{{vm.arrivalReason}}</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -99,7 +85,7 @@
                     <div class="panel-body">
                         <div ng-hide="!vm.info">
                             <div style="width: 100%; margin: 0; text-align:center">
-                                <img class="text-center" style="float: left" src={{vm.iconImage}}>
+                                <div class="text-center"> <img class="text-center" style="float: left" src={{vm.iconImage}}></div>
                                 <h1 class="text-center">{{vm.city}}</h1>
                                 <h4 class="text-muted text-center">{{vm.lgnLatDisplay}}</h4>
                                 <hr>
@@ -181,28 +167,28 @@
                             <!--IMG might need to wrap in a div with .text-center-->
                             <h4 class="text-center">{{vm.restName}}</h4>
                             <hr>
-
+                            <!--
                             <div class="col-sm-4">
-                                <p class="text-center"><strong></strong></p>
+                                <p class="text-center"><strong>Restaurant</strong></p>
                                 <p class="text-success text-center"><strong>{{vm.restName}}</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Rating</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.rating}}</strong></p>
+                            </div>-->
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Price</strong></p>
+                                <p class="text-success text-center"><strong>{{vm.price}}</strong></p>
                             </div>
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Rating</strong></p>
                                 <p class="text-success text-center"><strong>{{vm.rating}}</strong></p>
                             </div>
                             <div class="col-sm-4">
-                                <p class="text-center"><strong>Price</strong></p>
-                                <p class="text-success text-center"><strong>Price:{{vm.price}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Rating</strong></p>
-                                <p class="text-success text-center"><strong>Rating:{{vm.rating}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
                                 <p class="text-center"><strong>Address</strong></p>
                                 <p class="text-center">{{vm.address[0]}}, {{vm.zip}}</p>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-12">
                                 <p class="text-center"><strong>Website</strong></p>
                                 <p class="text-success text-center"><a href="{{vm.url}}" target="_blank">Open in Yelp!</a></p>
                             </div>
