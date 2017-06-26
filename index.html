@@ -141,6 +141,10 @@
                             <!--************************************
                             might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
                             ************************************-->
+                            <div map=""></div>
+                            <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOMXP2i68Rk2v0NkvxmZmRMDtmH9DFRac&callback=vm.initMap">
+                        </script>
                             <ul class="list-group col-md-12">
                                 <button ng-repeat="business in vm.businesses" class="list-group-item">
                                     <a ng-click="vm.getOneRestInfo($index)"> {{vm.businesses[$index].name}}</a>
@@ -246,6 +250,9 @@
     <script src="app/app.controller.js"></script>
     <script src="app/app.factory.js"></script>
     <script src="app/app.js"></script>
+    
+    <!--<script src="app/app.mapsDirective.js"></script>-->
+    
 
 </body>
 

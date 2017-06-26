@@ -14,10 +14,10 @@ var restaurants={};
         vm.info = false;
         vm.restInfo = false;
         vm.click = click;
-        vm.onActivate = onActivate;
-        // vm.clickVid = clickVid
         vm.toggle = false;
+        vm.onActivate = onActivate;
         vm.getOneRestInfo = getOneRestInfo;
+        vm.initMap = initMap;
 
         function onActivate(flightNumber) {
             travelFactory
@@ -26,8 +26,6 @@ var restaurants={};
                     vm.info=true;
                     var arrivalCityCode = response.data.response[0].arrival;
                     var departCityCode =  response.data.response[0].departure;
-                    // console.log(citiCode);
-                    // console.log(response);
                     getArrivalCityName(arrivalCityCode);
                     getDepartureCityName(departCityCode);
                 });
@@ -63,7 +61,6 @@ var restaurants={};
                     vm.departClosure = departAirportInfo.data.status.closureBegin;
                     if (vm.departClosure == "") {vm.departClosure = "None"}
                     vm.departReason = departAirportInfo.data.status.reason;
-                    console.log(departAirportInfo);
                 });
         }
         function getWeather(citiName) {
@@ -108,16 +105,24 @@ var restaurants={};
             vm.zip = pickRestaurant.location.zip_code;
             vm.image = pickRestaurant.image_url;
             vm.restInfo = true;
-
-            //console.log(pickRestaurant);
-
         }
         // click function to show flight info
         function click() {
 
             vm.info = true;
         };
-    }
+        function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
 
+    }
 })();
                     

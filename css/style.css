@@ -13,3 +13,8 @@ body {
 #freeVirus {
     margin-top: 6em;
 }
+
+#map {
+width: 450px;
+height: 450px;
+}
