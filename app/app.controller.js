@@ -12,6 +12,7 @@ var restaurants={};
         var vm = this;
         vm.show = false;
         vm.info = false;
+        vm.restInfo = false;
         vm.click = click;
         vm.onActivate = onActivate;
         vm.clickVid = clickVid
@@ -84,7 +85,6 @@ var restaurants={};
                     // vm.info=true;
                      vm.businesses = restInfo.data.businesses;
                      restaurants = restInfo.data.businesses;
-                     //console.log(vm.businesses);
                 });
         }
         function getOneRestInfo(index) {
@@ -98,7 +98,7 @@ var restaurants={};
             vm.catagories = pickRestaurant.catagories;
             vm.address = pickRestaurant.location.display_address;
             vm.image = pickRestaurant.image_url;
-
+            vm.restInfo = true;
 
             console.log(pickRestaurant);
 

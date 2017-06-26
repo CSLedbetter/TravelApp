@@ -22,8 +22,6 @@
                 .get('https://origin-iatacodes-api.herokuapp.com/api/v6/routes?api_key=8ec73afd-8270-4eb4-9db7-c4cab98d01b2&flight_number='+flightNumber)
                 .then(function (response) {
                     //var citiCode = response.data.response[0].arrival;
-                    //console.log('factory working');
-                    // getArrivalData(citiCode);
                     return response;
                 });
         }
