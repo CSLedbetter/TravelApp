@@ -46,28 +46,45 @@
                     </div>
                     <div class="panel-body">
                         <div class="row" ng-show="vm.info">
-                            <h5 class="text-center">Airport information for your flight from {{vm.departCityName}}
-                                to {{vm.arrivalCityName}}  
+                            <h5 class="text-center">Airport information for your flight from {{vm.departCityName}} to {{vm.arrivalCityName}}
                             </h5>
                             <!--Array Name .city (So it can read Denver) -->
                             <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="text-center"><strong>Depart Airport</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.departAirportName}}</strong></p>
 
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Airport</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.vm.departAirportName}}</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.arrivalAirportName}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Average Delay</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.avgDelay}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="text-center"><strong>Average Delay</strong></p>
+                                    <p class="text-danger text-center"><strong>{{vm.avgDelay}}</strong></p>
+                                </div>
+                                <!--<div class="col-sm-4">
                                 <p class="text-center"><strong>Closures</strong></p>
                                 <p class="text-success text-center"><strong>None</strong></p>
+                            </div>-->
+                                <div class="col-sm-4">
+                                    <p class="text-center"><strong>Reason</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.departReason}}</strong></p>
+                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Reason</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.reason}}</strong></p>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="text-center"><strong>Arrival Airport</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.arrivalAirportName}}</strong></p>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <p class="text-center"><strong>Average Delay</strong></p>
+                                    <p class="text-danger text-center"><strong>{{vm.avgDelay}}</strong></p>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <p class="text-center"><strong>Reason</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.arrivalReason}}</strong></p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -75,48 +92,58 @@
             </div>
 
             <div class="col-md-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Weather at your Destination</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">City Information</h3>
+                        <div ng-hide="!vm.info">
+                            <div style="width: 100%; margin: 0; text-align:center">
+                                <img class="text-center" style="float: left" src={{vm.iconImage}}>
+                                <h1 class="text-center">{{vm.city}}</h1>
+                                <h4 class="text-muted text-center">{{vm.lgnLatDisplay}}</h4>
+                                <hr>
                             </div>
-                            <div class="panel-body" ng-hide="!vm.info">
-                                <div style="width: 100%; margin: 0; text-align:center">
-                                    <img style = "float: left" src={{vm.iconImage}} >
-                                    <h1>{{vm.city}}</h1>
-                                    <h4>{{vm.lgnLatDisplay}}</h4>
+                            <div class="cityDiv row">
+                                <div class="cityInfo col-sm-4">
+                                    <p class="text-center"><strong>Temperature(F)</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.currentTemp}}</strong></p>
                                 </div>
-                                <div class = "cityDiv">
-                                    <div class="cityInfo">
-                                        <label>Temperature(F)</label>
-                                        <p>{{vm.currentTemp}}</p>
-                                        <label>Lowest Temp (F)</label>
-                                        <p>{{vm.lowTemp}}</p>    
-                                    </div>
-                                    <div class="cityInfo">
-                                        <label>Pressure</label>
-                                        <p>{{vm.pressure }}</p>
-                                        <label>Highest Temp(F)</label>
-                                        <p>{{vm.highTemp}}</p> 
-                                    </div>
-                                    <div class= "cityInfo">
-                                        <label>Humidity</label>
-                                        <p>{{vm.humidity}}</p>
-                                        <label>Wind Speed</label>
-                                        <p>{{vm.windSpeed}}mph</p> 
-                                    </div>
+                                <div class="cityInfo col-sm-4">
+                                    <p class=" text-center"><strong>Lowest Temp (F)</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.lowTemp}}</strong></p>
+                                </div>
+                                <div class="cityInfo col-sm-4">
+                                    <p class="text-center"><strong>Pressure</strong></p>
+                                    <p class="text-success text-center"><strong>{{vm.pressure }}</strong></p>
                                 </div>
                             </div>
+                            <div class="cityDiv row">
+                                <div class="cityInfo col-sm-4">
+                                    <p class="text-center"><strong>Highest Temp(F)</strong></p>
+                                    <p class="text-center text-success"><strong>{{vm.highTemp}}</strong></p>
+                                </div>
+                                <div class="cityInfo col-sm-4">
+                                    <p class="text-center"><strong>Humidity</strong></p>
+                                    <p class="text-center text-success"><strong>{{vm.humidity}}</strong></p>
+                                </div>
+                                <div class="cityInfo col-sm-4">
+                                    <p class="text-center"><strong>Wind Speed</strong></p>
+                                    <p class="text-center text-success"><strong>{{vm.windSpeed}}mph</strong></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+
+
+            </div>
+        </div>
+
+        <div class="col-md-12">
             <div class="col-md-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Yelp</h3>
                     </div>
@@ -131,7 +158,8 @@
                             <ul class="list-group col-md-12">
                                 <button ng-repeat="business in vm.businesses" class="list-group-item">
                                     <a ng-click="vm.getOneRestInfo($index)"> {{vm.businesses[$index].name}}</a>
-                                </button><!--"vm.getOneRestInfo($index)"-->
+                                </button>
+                                <!--"vm.getOneRestInfo($index)"-->
                             </ul>
                             <!--************************************-->
                         </div>
@@ -140,14 +168,17 @@
             </div>
 
             <div class="col-md-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Selected yelp info</h3>
                     </div>
                     <div class="panel-body">
 
                         <div class="row" ng-show="vm.restInfo">
-                            <img style = "max-width: 200px" src="{{vm.image}}" ><!--IMG might need to wrap in a div with .text-center-->
+                            <div class="text-center">
+                                <img style="max-width: 200px" src="{{vm.image}}">
+                            </div>
+                            <!--IMG might need to wrap in a div with .text-center-->
                             <h4 class="text-center">{{vm.restName}}</h4>
                             <hr>
 
@@ -160,14 +191,25 @@
                                 <p class="text-success text-center"><strong>{{vm.rating}}</strong></p>
                             </div>
                             <div class="col-sm-4">
-                                <p class="text-center"><strong>About</strong></p>
+                                <p class="text-center"><strong>Price</strong></p>
                                 <p class="text-success text-center"><strong>Price:{{vm.price}}</strong></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Rating</strong></p>
                                 <p class="text-success text-center"><strong>Rating:{{vm.rating}}</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.address[0]}}</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.address[1]}}</strong></p>
-                                <p class="text-success text-center"><a href="{{vm.url}}" target="_blank" >Go to Website</a></p>
-                                <!--   {{#arrayinBIZ.url}}     goes here!    ^        -->
-                                <!--vm.restName = pickRestaurant.name;
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Address</strong></p>
+                                <p class="text-center">{{vm.address[0]}}, {{vm.zip}}</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="text-center"><strong>Website</strong></p>
+                                <p class="text-success text-center"><a href="{{vm.url}}" target="_blank">Open in Yelp!</a></p>
+                            </div>
+
+
+                            <!--   {{#arrayinBIZ.url}}     goes here!    ^        -->
+                            <!--vm.restName = pickRestaurant.name;
                                 <!- vm.phone =  pickRestaurant.phone;
                                 vm.price = pickRestaurant.price;
                                 vm.rating = pickRestaurant.rating;
@@ -176,49 +218,48 @@
                                 vm.catagories = pickRestaurant.catagories;
                                 vm.address = pickRestaurant.display_address;
                                 vm.image = pickRestaurant.image_url;-->
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <!--form content/panels -->
+
+    </div>
+    <!--form content/panels -->
 
 
 
-        <!--"NewsLetter" input-->
-        <div class="col-lg-6 col-md-offset-3" id="freeVirus">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
-                <span class="input-group-btn">
+    <!--"NewsLetter" input-->
+    <div class="col-lg-6 col-md-offset-3" id="freeVirus">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter email for a free virus er News Letter! How do I backspace?">
+            <span class="input-group-btn">
                      <button class="btn btn-default" type="button" ng-click="vm.showVideo=true"> <a id="play-video" href="#">Yes Please!</a></button>
                 </span>
-            </div>
         </div>
-        <!--"NewsLetter" input-->
+    </div>
+    <!--"NewsLetter" input-->
 
 
-        <!--trollolololol-->
-        <div class="col-md-6 col-md-offset-3 text-center">
-            <div ng-hide="!vm.showVideo" class="embed-responsive embed-responsive-16by9">
-                <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center"
-                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
-                    frameborder="0" allowfullscreen></iframe>
-            </div>
+    <!--trollolololol-->
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div ng-hide="!vm.showVideo" class="embed-responsive embed-responsive-16by9">
+            <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
+                frameborder="0" allowfullscreen></iframe>
         </div>
-        <!--trollolololol-->
+    </div>
+    <!--trollolololol-->
 
 
 
 
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="app/app.module.js"></script>
-        <script src="app/app.controller.js"></script>
-        <script src="app/app.factory.js"></script>
-        <script src="app/app.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/app.controller.js"></script>
+    <script src="app/app.factory.js"></script>
+    <script src="app/app.js"></script>
 
 </body>
 

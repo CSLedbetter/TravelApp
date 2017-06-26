@@ -15,7 +15,7 @@ var restaurants={};
         vm.restInfo = false;
         vm.click = click;
         vm.onActivate = onActivate;
-        vm.clickVid = clickVid
+        // vm.clickVid = clickVid
         vm.toggle = false;
         vm.getOneRestInfo = getOneRestInfo;
 
@@ -41,6 +41,7 @@ var restaurants={};
                     vm.arrivalAirportName = arrivalAirportInfo.data.name;
                     vm.arrivalAvgDelay = arrivalAirportInfo.data.status.avgDelay;
                     vm.arrivalReason = arrivalAirportInfo.data.status.reason;
+                    
 
                     
                     getWeather(vm.arrivalCityName);
@@ -55,7 +56,8 @@ var restaurants={};
                     vm.departCityName = departAirportInfo.data.city;
                     vm.departAirportName = departAirportInfo.data.name;
                     vm.departavgDelay = departAirportInfo.data.status.avgDelay;
-                    vm.departreason = departAirportInfo.data.status.reason;
+                    vm.departReason = departAirportInfo.data.status.reason;
+                    
                 });
         }
         function getWeather(citiName) {
@@ -97,6 +99,7 @@ var restaurants={};
             vm.url  = pickRestaurant.url;
             vm.catagories = pickRestaurant.catagories;
             vm.address = pickRestaurant.location.display_address;
+            vm.zip = pickRestaurant.location.zip_code;
             vm.image = pickRestaurant.image_url;
             vm.restInfo = true;
 
