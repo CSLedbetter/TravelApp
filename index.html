@@ -24,7 +24,8 @@
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="vm.flightNumber" aria-label="...">
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="vm.onActivate(vm.flightNumber)">Get Info About Flight: {{vm.flightNumber}}</button>
+                            <button type="button" class="btn btn-default" ng-click="vm.onActivate(vm.flightNumber);
+                                vm.getGoogleMap()">Get Info About Flight: {{vm.flightNumber}}</button>
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,6 @@
                         <div class="row" ng-show="vm.info">
                             <h5 class="text-center">Airport information for your flight from {{vm.departCityName}} to {{vm.arrivalCityName}}
                             </h5>
-                            <!--Array Name .city (So it can read Denver) -->
                             <table class="table table-striped">
                                 <tr>
                                     <td></td>
@@ -85,8 +85,7 @@
                     <div class="panel-body">
                         <div ng-hide="!vm.info">
                             <div style="width: 100%; margin: 0; text-align:center">
-                                <div class="text-center"> <img class="text-center" style="float: left" src={{vm.iconImage}}></div>
-                                <h1 class="text-center">{{vm.city}}</h1>
+                                <h1 class="text-center"><img class="text-center" src={{vm.iconImage}}> {{vm.city}}</h1>
                                 <h4 class="text-muted text-center">{{vm.lgnLatDisplay}}</h4>
                                 <hr>
                             </div>
@@ -121,9 +120,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
 
@@ -141,17 +137,18 @@
                             <!--************************************
                             might have to change this ng-click pulled from my pokedex but it sets the url to the button. URL was part of the response.data
                             ************************************-->
-                            <div map=""></div>
-                            <script async defer
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOMXP2i68Rk2v0NkvxmZmRMDtmH9DFRac&callback=vm.initMap">
-                        </script>
+                            <div>
+                                <ng-map center="{{vm.lgnLatDisplay}}" zoom="14">
+                                <marker position="{{vm.businesses[$index].coordinates.latitude}},{{vm.businesses[$index].coordinates.longitude}}"
+                                    title="{{vm.businesses[$index].name}}" ng-repeat="business in vm.businesses">
+                                </marker>
+                                </ng-map>
+                            </div>      
                             <ul class="list-group col-md-12">
-                                <button ng-repeat="business in vm.businesses" class="list-group-item">
+                                <button ng-repeat="business in vm.businesses" class="list-group-item stripped">
                                     <a ng-click="vm.getOneRestInfo($index)"> {{vm.businesses[$index].name}}</a>
                                 </button>
-                                <!--"vm.getOneRestInfo($index)"-->
                             </ul>
-                            <!--************************************-->
                         </div>
                     </div>
                 </div>
@@ -166,20 +163,10 @@
 
                         <div class="row" ng-show="vm.restInfo">
                             <div class="text-center">
-                                <img style="max-width: 200px" src="{{vm.image}}">
+                                <img class="yelp" src="{{vm.image}}">
                             </div>
-                            <!--IMG might need to wrap in a div with .text-center-->
                             <h4 class="text-center">{{vm.restName}}</h4>
                             <hr>
-                            <!--
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Restaurant</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.restName}}</strong></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-center"><strong>Rating</strong></p>
-                                <p class="text-success text-center"><strong>{{vm.rating}}</strong></p>
-                            </div>-->
                             <div class="col-sm-4">
                                 <p class="text-center"><strong>Price</strong></p>
                                 <p class="text-success text-center"><strong>{{vm.price}}</strong></p>
@@ -196,18 +183,6 @@
                                 <p class="text-center"><strong>Website</strong></p>
                                 <p class="text-success text-center"><a href="{{vm.url}}" target="_blank">Open in Yelp!</a></p>
                             </div>
-
-
-                            <!--   {{#arrayinBIZ.url}}     goes here!    ^        -->
-                            <!--vm.restName = pickRestaurant.name;
-                                <!- vm.phone =  pickRestaurant.phone;
-                                vm.price = pickRestaurant.price;
-                                vm.rating = pickRestaurant.rating;
-                                vm.coordinates = pickRestaurant.coordinates;
-                                vm.url  = pickRestaurant.url;
-                                vm.catagories = pickRestaurant.catagories;
-                                vm.address = pickRestaurant.display_address;
-                                vm.image = pickRestaurant.image_url;-->
                         </div>
                     </div>
                 </div>
@@ -232,7 +207,7 @@
 
 
     <!--trollolololol-->
-    <div class="col-md-6 col-md-offset-3 text-center">
+    <div class="col-md-6 col-md-offset-3 text-center btm">
         <div ng-hide="!vm.showVideo" class="embed-responsive embed-responsive-16by9">
             <iframe id="video" style="max-width:560px; max-height: 325px;" class="embed-responsive-item text-center" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&amp;showinfo=0"
                 frameborder="0" allowfullscreen></iframe>
@@ -242,16 +217,15 @@
 
 
 
-
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDOMXP2i68Rk2v0NkvxmZmRMDtmH9DFRac"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/app.controller.js"></script>
     <script src="app/app.factory.js"></script>
     <script src="app/app.js"></script>
-    
-    <!--<script src="app/app.mapsDirective.js"></script>-->
     
 
 </body>

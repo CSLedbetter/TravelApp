@@ -18,3 +18,14 @@ body {
 width: 450px;
 height: 450px;
 }
+
+.yelp {
+    max-height: 200px;
+    max-width: auto;
+}
+button.stripped:nth-of-type(even){
+    background-color: #F9F9F9;   
+}
+.btm {
+    margin-bottom: 2em;
+}
